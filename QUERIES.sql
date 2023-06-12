@@ -18,7 +18,7 @@ SELECT vin
     ,model
     ,price
 FROM vehicle 
-WHERE vin = 1154;
+WHERE vin = 2118;
 
 -- 4 Find the dealership where a certain car is located by vin
 SELECT d.name
@@ -45,3 +45,15 @@ INNER JOIN vehicle AS v
 WHERE v.model = 'Altima';
 
 -- 6 GET ALL SALES INFORMATION FOR A SPECIFIC DEALER FOR SPECIFIC DATE RANGE
+SELECT d.name
+	, d.address
+    , d.phone
+FROM dealerships AS d
+INNER JOIN inventory AS i
+	ON d.dealership_ID = i.dealership_ID
+INNER JOIN vehicle AS v
+	ON i.VIN = v.vin
+INNER JOIN sales_contract AS sc
+	ON v.vin = sc.vin
+where d.dealership_ID = 103;
+    
